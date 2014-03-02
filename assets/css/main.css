@@ -237,8 +237,7 @@ a:after {
 #divider01 {
     background: url("../img/divider.jpg") no-repeat center center;
     background-size: cover;
-    min-height: 400px;
-    padding-top: 150px;
+    
 }
 
 #divider01 h1 {
