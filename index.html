@@ -43,11 +43,11 @@
             <li><a href="#contact" class="smoothScroll">Contact</a></li>
           </ul>
 
-          <!-- Modal trigger 
+          <!-- Modal trigger -->
           <ul class="nav navbar-nav navbar-right">
-          	<li><a href="#login" data-toggle="modal" data-target="#login">Login</a></li>
+          	<!--<li><a href="#login" data-toggle="modal" data-target="#login">Login</a></li>-->
           	<li><a href="#register" data-toggle="modal" data-target="#register">Register</a></li>
-          </ul> -->
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -145,7 +145,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal" id="register_email">Cancel</button>
-	        <button type="submit" class="btn btn-theme" id="register_submit">Register</button>
+	        <button type="submit" class="btn btn-theme" id="register_submit" data-dismiss="modal">Register</button>
 	      </div>
 	    </div>
 	  </div>
@@ -526,6 +526,7 @@
 	<script>
 		$(document).ready(function(e) {
 
+		
 		// beta request signup
 		$("#beta_submit").on("click", function(e) {
 			e.preventDefault();
@@ -574,6 +575,35 @@
 			$("#newsletter_email").val('')
 		});
 
+
+		// register signup
+		$("#register_submit").on("click", function(e) {
+			e.preventDefault();
+
+			// grab email
+			$name = $("#nameinput").val();
+			$email = $("#emailinput").val();
+
+			$.ajax({
+			  dataType: 'jsonp',
+			  url: "http://getsimpleform.com/messages/ajax?form_api_token=61277aeed6ad92792ddbc9e382b9e85b",
+			  data: {
+			  	name: $name,
+			    email: $email,
+			    newsletter: 0
+			  }
+			}).done(function() {
+			  //callback which can be used to show a thank you message
+			  //and reset the form
+			  alert("Thank you, we will contact you soon.");
+			});
+
+			// clear name & email input fields
+			$("#emailinput").val('');
+			$("#nameinput").val('');
+		});
+
+		
 		
 	});
 	</script>
