@@ -43,11 +43,11 @@
             <li><a href="#contact" class="smoothScroll">Contact</a></li>
           </ul>
 
-          <!-- Modal trigger -->
+          <!-- Modal trigger 
           <ul class="nav navbar-nav navbar-right">
           	<li><a href="#login" data-toggle="modal" data-target="#login">Login</a></li>
           	<li><a href="#register" data-toggle="modal" data-target="#register">Register</a></li>
-          </ul>
+          </ul> -->
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -132,20 +132,20 @@
 				  </div>
 				</div>
 
-				<!-- Password input-->
+				<!-- Password input
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="passwordinput">Password</label>
 				  <div class="col-md-5">
 				    <input id="passwordinput" name="passwordinput" type="password" placeholder="Password" class="form-control input-md" required>
 				    <span class="help-block">Password must be at least 8 characters</span>
 				  </div>
-				</div>
+				</div>-->
 			</form>
 
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	        <button type="submit" class="btn btn-theme">Register</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="register_email">Cancel</button>
+	        <button type="submit" class="btn btn-theme" id="register_submit">Register</button>
 	      </div>
 	    </div>
 	  </div>
@@ -183,8 +183,8 @@
 	    			<!--<a href="#features" type="submit" class="btn btn-lg btn-theme smoothScroll">LEARN MORE</a>-->
 	    		</div>
 	    		<div id="request-beta" class="form-inline">
-			    	<input type="text" class="form-control" placeholder="Your email">
-			        <button class="btn btn-lg btn-theme" type="button">Request Invite</button>
+			    	<input type="text" class="form-control" placeholder="Your email" id="beta_email">
+			        <button class="btn btn-lg btn-theme" type="button" id="beta_submit">Request Invite</button>
 			    </div>
 			    
 	    	</div>
@@ -478,8 +478,7 @@
 					<h3>Location</h3>
 					<br>
 					<p>Seattle, WA <br/>
-					   Tel.: 206-555-5555<br/>
-					   support@stattracker.me
+					   stattracker.me@gmail.com
 					</p>
 				</div>
 				
@@ -494,8 +493,8 @@
 					<br>
 					<p>Subscribe to our newsletter and be the first to know our latest updates.</p>
 					<div class="form-inline">
-				    	<input type="text" class="form-control" placeholder="Your email">
-				        <button class="btn btn-theme" type="button">Subscribe</button>
+				    	<input type="text" class="form-control" placeholder="Your email" id="newsletter_email">
+				        <button class="btn btn-theme" type="button" id="newsletter_submit">Subscribe</button>
 				    </div>
 				</div>
 			</div>
@@ -522,6 +521,61 @@
 		$('.carousel').carousel({
 			interval: 3500
 		})
+	</script>
+	<!-- SimpleForm Submission Script -->
+	<script>
+		$(document).ready(function(e) {
+
+		// beta request signup
+		$("#beta_submit").on("click", function(e) {
+			e.preventDefault();
+
+			// grab email
+			$email = $("#beta_email").val();
+
+			$.ajax({
+			  dataType: 'jsonp',
+			  url: "http://getsimpleform.com/messages/ajax?form_api_token=61277aeed6ad92792ddbc9e382b9e85b",
+			  data: {
+			    email: $email,
+			    newsletter: 0
+			  }
+			}).done(function() {
+			  //callback which can be used to show a thank you message
+			  //and reset the form
+			  alert("Thank you, we will contact you soon.");
+			});
+
+			// clear email input field
+			$("#beta_email").val('')
+		});
+
+		// newsletter sign up
+		$("#newsletter_submit").on("click", function(e) {
+			e.preventDefault();
+
+			// grab email
+			$email = $("#newsletter_email").val();
+
+			$.ajax({
+			  dataType: 'jsonp',
+			  url: "http://getsimpleform.com/messages/ajax?form_api_token=61277aeed6ad92792ddbc9e382b9e85b",
+			  data: {
+			    email: $email,
+			    newsletter: 1
+			  }
+			}).done(function() {
+			  //callback which can be used to show a thank you message
+			  //and reset the form
+			  alert("You've been added to our newsletter list, thank you for joining.");
+			});
+
+			// clear email input field
+			$("#newsletter_email").val('')
+		});
+
+		
+	});
 	</script>
   </body>
 </html>
