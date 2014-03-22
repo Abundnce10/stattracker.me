@@ -132,6 +132,15 @@
 				  </div>
 				</div>
 
+				<!-- Promo input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="emailinput">Promo Code</label>  
+				  <div class="col-md-5">
+				  <input id="promoinput" name="promoinput" type="text" placeholder="i.e. 'SuperStar'" class="form-control input-md" required>
+				  <span class="help-block">If applicable</span>  
+				  </div>
+				</div>
+
 				<!-- Password input
 				<div class="form-group">
 				  <label class="col-md-4 control-label" for="passwordinput">Password</label>
@@ -583,6 +592,7 @@
 			// grab email
 			$name = $("#nameinput").val();
 			$email = $("#emailinput").val();
+			$promo = $("#promoinput").val();
 
 			$.ajax({
 			  dataType: 'jsonp',
@@ -590,7 +600,7 @@
 			  data: {
 			  	name: $name,
 			    email: $email,
-			    newsletter: 0
+			    promo_code: $promo
 			  }
 			}).done(function() {
 			  //callback which can be used to show a thank you message
@@ -601,6 +611,7 @@
 			// clear name & email input fields
 			$("#emailinput").val('');
 			$("#nameinput").val('');
+			$("#promoinput").val('');
 		});
 
 		
