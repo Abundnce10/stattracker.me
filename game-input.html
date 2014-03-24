@@ -48,218 +48,220 @@
       </div>
     </div>
 
+    <div ng-app="basicBasketballApp">
 
-    <div class="container" id="body-content">
+      <div class="container" id="body-content" ng-controller="AppCtrl">
 
-      <div class="starter-template text-center">
-        <h1><i class="glyphicon glyphicon-user"></i> Michael Jordan #23</h1>
-      </div>
+        <div class="starter-template text-center">
+          <h1><i class="glyphicon glyphicon-user"></i> Michael Jordan #23</h1>
+        </div>
 
 
-      <!--tabs-->
-      <div class="container">
-        <ul class="nav nav-tabs" id="myTab">
-          <li class="active"><a href="#game-input" data-toggle="tab"><i class="glyphicon glyphicon-pencil"></i> Input</a></li>
-          <li><a href="#game-summary" data-toggle="tab"><i class="glyphicon glyphicon-signal"></i> Summary</a></li>
-          <li><a href="#game-settings" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
-        </ul>
-        
-        <div class="tab-content">
-          <div class="tab-pane active" id="game-input">
+        <!--tabs-->
+        <div class="container">
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#game-input" data-toggle="tab"><i class="glyphicon glyphicon-pencil"></i> Input</a></li>
+            <li><a href="#game-summary" data-toggle="tab"><i class="glyphicon glyphicon-signal"></i> Summary</a></li>
+            <li><a href="#game-settings" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+          </ul>
+          
+          <div class="tab-content">
+            <div class="tab-pane active" id="game-input">
 
-            <div class="container">
+              <div class="container">
 
-              <div class="row">
-                <div class="container" id="save-undo">
-                  <div class="btn btn-warning col-sm-1 col-xs-3">Undo</div>
-                  <div class="btn btn-primary col-sm-1 col-sm-offset-10 col-xs-3 col-xs-offset-6">Save</div>
+                <div class="row">
+                  <div class="container" id="save-undo">
+                    <div class="btn btn-warning col-sm-1 col-xs-3">Undo</div>
+                    <div class="btn btn-primary col-sm-1 col-sm-offset-10 col-xs-3 col-xs-offset-6">Save</div>
+                  </div>
                 </div>
-              </div>
 
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Shooting Statistics</h3>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-sm-4 col-xs-12 stat-group text-center">
-                      <span>Field Goal</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-default">Miss</button>
-                        <button type="button" class="btn btn-success">Make</button>
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Shooting Statistics</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-sm-4 col-xs-12 stat-group text-center">
+                        <span>Field Goal</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default" stat="miss('FG')">Miss</button>
+                          <button type="button" class="btn btn-success" stat="make('FG')">Make</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-4 col-xs-12 stat-group text-center">
-                      <span>3-Pointer</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-default">Miss</button>
-                        <button type="button" class="btn btn-success">Make</button>
+                      <div class="col-sm-4 col-xs-12 stat-group text-center">
+                        <span>3-Pointer</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default" stat="miss('Three')">Miss</button>
+                          <button type="button" class="btn btn-success" stat="make('Three')">Make</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-4 col-xs-12 stat-group text-center">
-                      <span>Free Throw</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-default">Miss</button>
-                        <button type="button" class="btn btn-success">Make</button>
+                      <div class="col-sm-4 col-xs-12 stat-group text-center">
+                        <span>Free Throw</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default" stat="miss('FT')">Miss</button>
+                          <button type="button" class="btn btn-success" stat="make('FT')">Make</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="panel panel-warning">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Non-Shooting Statistics</h3>
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-sm-3 col-xs-4 stat-group text-center">
-                      <span>O.Reb</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success">+1</button>
+                <div class="panel panel-warning">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Non-Shooting Statistics</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-sm-3 col-xs-4 stat-group text-center">
+                        <span>O.Reb</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success">+1</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-3 col-xs-4 stat-group text-center">
-                      <span>D.Reb</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success">+1</button>
+                      <div class="col-sm-3 col-xs-4 stat-group text-center">
+                        <span>D.Reb</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success">+1</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-3 col-xs-4 stat-group text-center">
-                      <span>Assist</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success">+1</button>
+                      <div class="col-sm-3 col-xs-4 stat-group text-center">
+                        <span>Assist</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success">+1</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-3 col-xs-4 stat-group text-center">
-                      <span>Steal</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success">+1</button>
+                      <div class="col-sm-3 col-xs-4 stat-group text-center">
+                        <span>Steal</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success">+1</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-3 col-xs-4 stat-group text-center">
-                      <span>Tnover</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success">+1</button>
+                      <div class="col-sm-3 col-xs-4 stat-group text-center">
+                        <span>Tnover</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success">+1</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-3 col-xs-4 stat-group text-center">
-                      <span>Block</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success">+1</button>
+                      <div class="col-sm-3 col-xs-4 stat-group text-center">
+                        <span>Block</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success">+1</button>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="col-sm-3 col-xs-4 stat-group text-center">
-                      <span>Foul</span>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success">+1</button>
+                      <div class="col-sm-3 col-xs-4 stat-group text-center">
+                        <span>Foul</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-success">+1</button>
+                        </div>
                       </div>
-                    </div>
 
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="tab-pane" id="game-summary">
-            <div class="container">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Statistic</th>
-                    <th>Total</th>
-                    <th>Season Avg.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Points</td>
-                    <td>20</td>
-                    <td>17.8</td>
-                  </tr>
-                  <tr>
-                    <td>FGM-A</td>
-                    <td>6-9</td>
-                    <td>55.6%</td>
-                  </tr>
-                  <tr>
-                    <td>3PM-A</td>
-                    <td>2-3</td>
-                    <td>41.9%</td>
-                  </tr>
-                  <tr>
-                    <td>FTM-A</td>
-                    <td>6-8</td>
-                    <td>84.7%</td>
-                  </tr>
-                  <tr>
-                    <td>Tot Rebs</td>
-                    <td>7</td>
-                    <td>6.6</td>
-                  </tr>
-                  <tr>
-                    <td>Off. Rebs</td>
-                    <td>2</td>
-                    <td>1.9</td>
-                  </tr>
-                  <tr>
-                    <td>Def. Rebs</td>
-                    <td>5</td>
-                    <td>4.5</td>
-                  </tr>
-                  <tr>
-                    <td>Assists</td>
-                    <td>11</td>
-                    <td>10.1</td>
-                  </tr>
-                  <tr>
-                    <td>Blocks</td>
-                    <td>1</td>
-                    <td>0.8</td>
-                  </tr>
-                  <tr>
-                    <td>Steals</td>
-                    <td>4</td>
-                    <td>3.3</td>
-                  </tr>
-                  <tr>
-                    <td>Turnovers</td>
-                    <td>2</td>
-                    <td>3.1</td>
-                  </tr>
-                  <tr>
-                    <td>Fouls</td>
-                    <td>3</td>
-                    <td>2.7</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="tab-pane" id="game-summary">
+              <div class="container">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Statistic</th>
+                      <th>Total</th>
+                      <th>Season Avg.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Points</td>
+                      <td>{{stats.Points}}</td>
+                      <td>17.8</td>
+                    </tr>
+                    <tr>
+                      <td>FGM-A</td>
+                      <td>{{stats.FGM}}-{{stats.FGA}}</td>
+                      <td>55.6%</td>
+                    </tr>
+                    <tr>
+                      <td>3PM-A</td>
+                      <td>{{stats.ThreeM}}-{{stats.ThreeA}}</td>
+                      <td>41.9%</td>
+                    </tr>
+                    <tr>
+                      <td>FTM-A</td>
+                      <td>{{stats.FTM}}-{{stats.FTA}}</td>
+                      <td>84.7%</td>
+                    </tr>
+                    <tr>
+                      <td>Tot Rebs</td>
+                      <td>7</td>
+                      <td>6.6</td>
+                    </tr>
+                    <tr>
+                      <td>Off. Rebs</td>
+                      <td>2</td>
+                      <td>1.9</td>
+                    </tr>
+                    <tr>
+                      <td>Def. Rebs</td>
+                      <td>5</td>
+                      <td>4.5</td>
+                    </tr>
+                    <tr>
+                      <td>Assists</td>
+                      <td>11</td>
+                      <td>10.1</td>
+                    </tr>
+                    <tr>
+                      <td>Blocks</td>
+                      <td>1</td>
+                      <td>0.8</td>
+                    </tr>
+                    <tr>
+                      <td>Steals</td>
+                      <td>4</td>
+                      <td>3.3</td>
+                    </tr>
+                    <tr>
+                      <td>Turnovers</td>
+                      <td>2</td>
+                      <td>3.1</td>
+                    </tr>
+                    <tr>
+                      <td>Fouls</td>
+                      <td>3</td>
+                      <td>2.7</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-          <div class="tab-pane" id="game-settings">
-            Lorem settings dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-            <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-              dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-              Aliquam in felis sit amet augue.</p>
+            <div class="tab-pane" id="game-settings">
+              Lorem settings dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+              <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+                dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+                Aliquam in felis sit amet augue.</p>
+            </div>
           </div>
         </div>
-      </div>
-      <!--/tabs-->
+        <!--/tabs-->
 
 
-      
+        
 
 
 
-    </div><!-- /.container -->
+      </div><!-- /.container -->
+    </div><!-- /.ng-app -->
 
 
     <!-- Bootstrap core JavaScript
@@ -267,5 +269,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular.js"></script>
+    <script type="text/javascript" src="assets/js/game-input.js"></script>
   </body>
 </html>
