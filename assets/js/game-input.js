@@ -3,6 +3,7 @@ var app = angular.module("basicBasketballApp", []);
 app.controller("AppCtrl", function($scope) {
 	$scope.stats = {
 		Points: 0,
+		Rebounds: 0,
 		FGM: 0,
 		FGA: 0,
 		ThreeM: 0,
@@ -15,7 +16,7 @@ app.controller("AppCtrl", function($scope) {
 		STL: 0,
 		BLK: 0,
 		TRN: 0,
-		FOULS: 0
+		FOUL: 0
 	};
 
 	$scope.make = function(shotType) {
@@ -37,7 +38,7 @@ app.controller("AppCtrl", function($scope) {
 	};
 
 	$scope.miss = function(shotType) {
-		if(shotType == 'FG') {
+		if (shotType == 'FG') {
 			$scope.stats.FGA += 1;
 		} else if (shotType == 'FT') {
 			$scope.stats.FTA += 1;
@@ -47,38 +48,25 @@ app.controller("AppCtrl", function($scope) {
 		}
 	};
 
-	$scope.FGmake = function() {
-		$scope.stats.FGM += 1;
-		$scope.stats.FGA += 1;
-		$scope.stats.Points += 2;
+	$scope.increment = function(statType) {
+		if (statType == 'OREB') {
+			$scope.stats.OREB += 1;
+			$scope.stats.Rebounds += 1;
+		} else if (statType == 'DREB') {
+			$scope.stats.DREB += 1;
+			$scope.stats.Rebounds += 1;
+		} else if (statType == 'ASST') {
+			$scope.stats.ASST += 1;
+		} else if (statType == 'BLK') {
+			$scope.stats.BLK += 1;
+		} else if (statType == 'STL') {
+			$scope.stats.STL += 1;
+		} else if (statType == 'TRN') {
+			$scope.stats.TRN += 1;
+		} else if (statType == 'FOUL') {
+			$scope.stats.FOUL += 1;
+		}
 	};
-
-	$scope.FGmiss = function() {
-		$scope.stats.FGA += 1;
-	};
-
-	$scope.FTmake = function() {
-		$scope.stats.FTM += 1;
-		$scope.stats.FTA += 1;
-		$scope.stats.Points += 1;
-	};
-
-	$scope.FTmiss = function() {
-		$scope.stats.FTA += 1;
-	};
-
-	$scope.Threemake = function() {
-		$scope.stats.ThreeM += 1;
-		$scope.stats.ThreeA += 1;
-		$scope.stats.FGM += 1;
-		$scope.stats.FGA += 1;
-		$scope.stats.Points += 3;
-	};
-
-	$scope.Threemiss = function() {
-		$scope.stats.ThreeA += 1;
-		$scope.stats.FGA += 1;
-	};	
 
 
 });

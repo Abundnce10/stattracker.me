@@ -119,49 +119,49 @@
                       <div class="col-sm-3 col-xs-4 stat-group text-center">
                         <span>O.Reb</span>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success">+1</button>
+                          <button type="button" class="btn btn-success" stat="increment('OREB')">+1</button>
                         </div>
                       </div>
 
                       <div class="col-sm-3 col-xs-4 stat-group text-center">
                         <span>D.Reb</span>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success">+1</button>
+                          <button type="button" class="btn btn-success" stat="increment('DREB')">+1</button>
                         </div>
                       </div>
 
                       <div class="col-sm-3 col-xs-4 stat-group text-center">
                         <span>Assist</span>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success">+1</button>
+                          <button type="button" class="btn btn-success" stat="increment('ASST')">+1</button>
                         </div>
                       </div>
 
                       <div class="col-sm-3 col-xs-4 stat-group text-center">
                         <span>Steal</span>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success">+1</button>
+                          <button type="button" class="btn btn-success" stat="increment('STL')">+1</button>
                         </div>
                       </div>
 
                       <div class="col-sm-3 col-xs-4 stat-group text-center">
                         <span>Tnover</span>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success">+1</button>
+                          <button type="button" class="btn btn-success" stat="increment('TRN')">+1</button>
                         </div>
                       </div>
 
                       <div class="col-sm-3 col-xs-4 stat-group text-center">
                         <span>Block</span>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success">+1</button>
+                          <button type="button" class="btn btn-success" stat="increment('BLK')">+1</button>
                         </div>
                       </div>
 
                       <div class="col-sm-3 col-xs-4 stat-group text-center">
                         <span>Foul</span>
                         <div class="btn-group">
-                          <button type="button" class="btn btn-success">+1</button>
+                          <button type="button" class="btn btn-success" stat="increment('FOUL')">+1</button>
                         </div>
                       </div>
 
@@ -203,42 +203,42 @@
                     </tr>
                     <tr>
                       <td>Tot Rebs</td>
-                      <td>7</td>
+                      <td>{{stats.Rebounds}}</td>
                       <td>6.6</td>
                     </tr>
                     <tr>
                       <td>Off. Rebs</td>
-                      <td>2</td>
+                      <td>{{stats.OREB}}</td>
                       <td>1.9</td>
                     </tr>
                     <tr>
                       <td>Def. Rebs</td>
-                      <td>5</td>
+                      <td>{{stats.DREB}}</td>
                       <td>4.5</td>
                     </tr>
                     <tr>
                       <td>Assists</td>
-                      <td>11</td>
+                      <td>{{stats.ASST}}</td>
                       <td>10.1</td>
                     </tr>
                     <tr>
                       <td>Blocks</td>
-                      <td>1</td>
+                      <td>{{stats.BLK}}</td>
                       <td>0.8</td>
                     </tr>
                     <tr>
                       <td>Steals</td>
-                      <td>4</td>
+                      <td>{{stats.STL}}</td>
                       <td>3.3</td>
                     </tr>
                     <tr>
                       <td>Turnovers</td>
-                      <td>2</td>
+                      <td>{{stats.TRN}}</td>
                       <td>3.1</td>
                     </tr>
                     <tr>
                       <td>Fouls</td>
-                      <td>3</td>
+                      <td>{{stats.FOUL}}</td>
                       <td>2.7</td>
                     </tr>
                   </tbody>
