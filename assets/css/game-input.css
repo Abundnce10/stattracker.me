@@ -11,3 +11,6 @@ body {
 .tab-content {
 	padding-top: 15px;
 }
+#save-undo {
+	margin-bottom: 10px;
+}
