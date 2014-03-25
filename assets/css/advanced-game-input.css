@@ -1,0 +1,22 @@
+body {
+  padding-top: 50px;
+}
+.body-content {
+  padding: 40px 15px;
+  text-align: center;
+}
+.stat-group {
+  margin-top: 10px;
+}
+.tab-content {
+	padding-top: 15px;
+}
+#save-undo {
+	margin-bottom: 10px;
+}
+
+#basketball-court-container {
+	background-color: orange;
+	min-height: 50px;
+	margin-bottom: 20px;
+}

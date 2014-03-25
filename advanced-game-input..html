@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/advanced-game-input.css" rel="stylesheet">
+
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">StatTracker.Me</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div ng-app="basicBasketballApp">
+
+      <div class="container" id="body-content" ng-controller="AppCtrl">
+
+        <div class="starter-template text-center">
+          <h1><i class="glyphicon glyphicon-user"></i> Michael Jordan #23</h1>
+        </div>
+
+
+        <!--tabs-->
+        <div class="container">
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#game-input" data-toggle="tab"><i class="glyphicon glyphicon-pencil"></i> Input</a></li>
+            <li><a href="#game-summary" data-toggle="tab"><i class="glyphicon glyphicon-signal"></i> Summary</a></li>
+            <li><a href="#game-settings" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+          </ul>
+          
+          <div class="tab-content">
+            <div class="tab-pane active" id="game-input">
+
+              <div class="container">
+
+                <!--
+                <div class="row">
+                  <div class="container" id="save-undo">
+                    <div class="btn btn-warning col-sm-1 col-xs-3">Undo</div>
+                    <div class="btn btn-primary col-sm-1 col-sm-offset-10 col-xs-3 col-xs-offset-6">Save</div>
+                  </div>
+                </div>
+
+
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Shooting Statistics</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-sm-4 col-xs-12 stat-group text-center">
+                        <span>Field Goal</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default" stat="miss('FG')">Miss</button>
+                          <button type="button" class="btn btn-success" stat="make('FG')">Make</button>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 col-xs-12 stat-group text-center">
+                        <span>3-Pointer</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default" stat="miss('Three')">Miss</button>
+                          <button type="button" class="btn btn-success" stat="make('Three')">Make</button>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-4 col-xs-12 stat-group text-center">
+                        <span>Free Throw</span>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default" stat="miss('FT')">Miss</button>
+                          <button type="button" class="btn btn-success" stat="make('FT')">Make</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                -->
+
+
+                <div class="row">
+                  <div class="col-md-6" id="basketball-court-container">
+
+                  </div>
+                  <div class="col-md-6">
+
+
+
+                      <div class="panel panel-warning">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Non-Shooting Statistics</h3>
+                        </div>
+                        <div class="panel-body">
+                          <div class="row">
+                            <div class="col-sm-2 col-xs-4 stat-group text-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success" stat="increment('OREB')">OREB</button>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-2 col-xs-4 stat-group text-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success" stat="increment('DREB')">DREB</button>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-2 col-xs-4 stat-group text-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success" stat="increment('ASST')">ASST</button>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-2 col-xs-4 stat-group text-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success" stat="increment('STL')">STL</button>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-2 col-xs-4 stat-group text-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success" stat="increment('TRN')">TRN</button>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-2 col-xs-4 stat-group text-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success" stat="increment('BLK')">BLK</button>
+                              </div>
+                            </div>
+
+                            <div class="col-sm-2 col-xs-4 stat-group text-center">
+                              <div class="btn-group">
+                                <button type="button" class="btn btn-success" stat="increment('FOUL')">FOUL</button>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                  </div>
+                </div>  
+
+
+
+                
+              </div>
+            </div>
+            <div class="tab-pane" id="game-summary">
+              <div class="container">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Statistic</th>
+                      <th>Total</th>
+                      <th>Season Avg.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Points</td>
+                      <td>{{stats.Points}}</td>
+                      <td>17.8</td>
+                    </tr>
+                    <tr>
+                      <td>FGM-A</td>
+                      <td>{{stats.FGM}}-{{stats.FGA}}</td>
+                      <td>55.6%</td>
+                    </tr>
+                    <tr>
+                      <td>3PM-A</td>
+                      <td>{{stats.ThreeM}}-{{stats.ThreeA}}</td>
+                      <td>41.9%</td>
+                    </tr>
+                    <tr>
+                      <td>FTM-A</td>
+                      <td>{{stats.FTM}}-{{stats.FTA}}</td>
+                      <td>84.7%</td>
+                    </tr>
+                    <tr>
+                      <td>Tot Rebs</td>
+                      <td>{{stats.Rebounds}}</td>
+                      <td>6.6</td>
+                    </tr>
+                    <tr>
+                      <td>Off. Rebs</td>
+                      <td>{{stats.OREB}}</td>
+                      <td>1.9</td>
+                    </tr>
+                    <tr>
+                      <td>Def. Rebs</td>
+                      <td>{{stats.DREB}}</td>
+                      <td>4.5</td>
+                    </tr>
+                    <tr>
+                      <td>Assists</td>
+                      <td>{{stats.ASST}}</td>
+                      <td>10.1</td>
+                    </tr>
+                    <tr>
+                      <td>Blocks</td>
+                      <td>{{stats.BLK}}</td>
+                      <td>0.8</td>
+                    </tr>
+                    <tr>
+                      <td>Steals</td>
+                      <td>{{stats.STL}}</td>
+                      <td>3.3</td>
+                    </tr>
+                    <tr>
+                      <td>Turnovers</td>
+                      <td>{{stats.TRN}}</td>
+                      <td>3.1</td>
+                    </tr>
+                    <tr>
+                      <td>Fouls</td>
+                      <td>{{stats.FOUL}}</td>
+                      <td>2.7</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="game-settings">
+              Lorem settings dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+              <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+                dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+                Aliquam in felis sit amet augue.</p>
+            </div>
+          </div>
+        </div>
+        <!--/tabs-->
+
+
+        
+
+
+
+      </div><!-- /.container -->
+    </div><!-- /.ng-app -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="assets/js/angular.js"></script>-->
+    <script type="text/javascript" src="assets/js/advanced-game-input.js"></script>
+  </body>
+</html>
