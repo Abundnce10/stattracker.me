@@ -15,8 +15,13 @@ body {
 	margin-bottom: 10px;
 }
 
-#basketball-court-container {
-	background-color: orange;
-	min-height: 50px;
-	margin-bottom: 20px;
+#basketball-court-container {	
+	padding: 0;
+}
+#basketball_court {
+    background-color: orange;
+    stroke: black; stroke-width: 4;
+}
+svg .boundary {
+	stroke: black; stroke-width: 8;
 }

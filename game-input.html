@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Game Input - Michael Jordan #23 | StatTracker.Me</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -53,29 +52,58 @@
       <div class="container" id="body-content" ng-controller="AppCtrl">
 
         <div class="starter-template text-center">
-          <h1><i class="glyphicon glyphicon-user"></i> Michael Jordan #23</h1>
+          <h3><i class="glyphicon glyphicon-user"></i> Michael Jordan #23</h3>
         </div>
 
 
         <!--tabs-->
         <div class="container">
+
           <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#game-input" data-toggle="tab"><i class="glyphicon glyphicon-pencil"></i> Input</a></li>
-            <li><a href="#game-summary" data-toggle="tab"><i class="glyphicon glyphicon-signal"></i> Summary</a></li>
-            <li><a href="#game-settings" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
+            <li class="active">
+              <a class="hidden-sm" href="#game-input" data-toggle="tab">
+                <i class="glyphicon glyphicon-pencil game-input-tab"></i>
+                
+              </a>
+              <a class="hidden-xs" href="#game-input" data-toggle="tab">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <span>Input</span>
+              </a>
+            </li>
+
+
+            <li>
+              <a class="hidden-sm" href="#game-summary" data-toggle="tab">
+                <i class="glyphicon glyphicon-signal game-input-tab"></i> 
+                
+              </a>
+              <a class="hidden-xs" href="#game-summary" data-toggle="tab">
+                <i class="glyphicon glyphicon-signal"></i> 
+                <span>Summary</span>
+              </a>
+            </li>
+
+
+            <li>
+              <a class="hidden-sm" href="#game-settings" data-toggle="tab">
+                <i class="glyphicon glyphicon-cog game-input-tab"></i> 
+                
+              </a>
+              <a class="hidden-xs" href="#game-settings" data-toggle="tab">
+                <i class="glyphicon glyphicon-cog"></i> 
+                <span>Settings</span>
+              </a>
+            </li>
           </ul>
           
+
+
+
+
           <div class="tab-content">
             <div class="tab-pane active" id="game-input">
 
               <div class="container">
-
-                <div class="row">
-                  <div class="container" id="save-undo">
-                    <div class="btn btn-warning col-sm-1 col-xs-3">Undo</div>
-                    <div class="btn btn-primary col-sm-1 col-sm-offset-10 col-xs-3 col-xs-offset-6">Save</div>
-                  </div>
-                </div>
 
                 <div class="panel panel-success">
                   <div class="panel-heading">

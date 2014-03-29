@@ -1,3 +1,15 @@
+navigator.vibrate = navigator.vibrate ||
+       navigator.webkitVibrate ||
+       navigator.mozVibrate ||
+       navigator.msVibrate;
+
+var vibrateClient = function(duration) {
+    navigator.vibrate(duration)
+};
+
+vibrateClient([120, 40, 120]);
+
+
 var app = angular.module("basicBasketballApp", []);
 
 app.controller("AppCtrl", function($scope) {
@@ -20,6 +32,10 @@ app.controller("AppCtrl", function($scope) {
 	};
 
 	$scope.make = function(shotType) {
+        
+        // vibrate client
+        vibrateClient([120, 40, 120]);
+        
 		if(shotType == 'FG') {
 			$scope.stats.FGM += 1;
 			$scope.stats.FGA += 1;
@@ -38,6 +54,10 @@ app.controller("AppCtrl", function($scope) {
 	};
 
 	$scope.miss = function(shotType) {
+        
+        // vibrate client
+        vibrateClient([120, 40, 120]);
+        
 		if (shotType == 'FG') {
 			$scope.stats.FGA += 1;
 		} else if (shotType == 'FT') {
@@ -49,6 +69,11 @@ app.controller("AppCtrl", function($scope) {
 	};
 
 	$scope.increment = function(statType) {
+
+		
+		// vibrate client
+        vibrateClient([120, 40, 120]);
+
 		if (statType == 'OREB') {
 			$scope.stats.OREB += 1;
 			$scope.stats.Rebounds += 1;
