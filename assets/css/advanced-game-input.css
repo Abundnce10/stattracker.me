@@ -14,6 +14,9 @@ body {
 #save-undo {
 	margin-bottom: 10px;
 }
+.glyphicon.game-input-tab {
+	font-size: 1.4em;
+}
 
 #basketball-court-container {	
 	padding: 0;
