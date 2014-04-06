@@ -1,88 +1,3 @@
-$(document).ready(function(e) {
-
-	if (navigator.vibrate) {
-			navigator.vibrate([200, 100, 150]);
-	}
-
-
-	var $court = $("#basketball-court-container");
-	
-
-	var createCourtSVG = function(width) {
-	    var width = width;
-	    var height = width * 0.75;
-	    var widthString = width.toString()
-	    var heightString = height.toString()
-
-	    // create <svg> element, populate width/height
-	    var html = '<svg id="basketball_court" ng-click="test()" xmlns="http://www.w3.org/2000/svg" height="'+ heightString  +'" width="'+ widthString +'">'  
-	    
-	    // create Boundary
-	    html += '<line x1="0" y1="0" x2="0" y2="'+ heightString +'" class="boundary" />';
-	    html += '<line x1="0" y1="0" x2="'+ widthString +'" y2="0" class="boundary" />';
-	    html += '<line x1="0" y1="'+ heightString +'" x2="'+ widthString +'" y2="'+ heightString +'" class="boundary" />';
-	    html += '<line x1="'+ widthString +'" y1="0" x2="'+ widthString +'" y2="'+ heightString +'" class="boundary" />';
-	    
-	    // create 3 Point Arc
-	    var arcX1 = Math.round(0.11 * width).toString();  // straight line, left corner
-	    var arcX2 = Math.round(0.8875 * width).toString();  // straight line, right corner
-	    var straightLine = Math.round(0.1 * height).toString();  // length of straight lines in corner
-	    html += '<path d="M '+ arcX1 +' 0 V '+ straightLine +'" />';
-	    html += '<path d="M '+ arcX2 +' 0 V '+ straightLine +'" />';
-	    var arcPath = ["M", arcX1, straightLine, "C", arcX1, height, arcX2, height, arcX2, straightLine].join(" ");
-	    html += '<path d="'+ arcPath +'" fill="transparent" />';
-	    
-	    // create Key Outline
-	    var keyX1 = Math.round(0.35 *width);
-	    var keyWidth = Math.round(0.3 * width);
-	    var keyHeight = Math.round(0.57 * height);
-	    var keyPath = ["M", keyX1, 0, "v", keyHeight, "h", keyWidth, "v", "-"+keyHeight].join(" ");
-	    html += '<path d="'+ keyPath +'" fill="transparent" />';
-	    
-	    // create Top of Key
-	    var centerX = Math.round(0.5 * width).toString();
-	    var topR = Math.round(0.15 * width).toString();
-	    html += '<circle cx="'+ centerX +'" cy="'+ keyHeight.toString() +'" r="'+ topR +'" fill="transparent" />';
-	    
-	    // create Backboard
-	    var backX1 = Math.round(0.41 * width);
-	    var backY = Math.round(0.033 * height);
-	    var backWidth = Math.round(0.18 * width);
-	    var backPath = ["M", backX1, backY, 'h', backWidth].join(' ');
-	    html += '<path d="'+ backPath +'" />';
-	    
-	    // create Basket
-	    var basketY = Math.round(0.08 * height).toString();
-	    var basketR = Math.round(0.03 * width).toString();
-	    html += '<circle cx="'+ centerX +'" cy="'+ basketY +'" r="'+ basketR +'" fill="transparent" />';
-	    
-	    // close <svg>
-	    html += '</svg>'
-	    
-	    return html;
-	};
-
-
-	var $courtWidth = $("#basketball-court-container").outerWidth();
-	var $courtHTML = createCourtSVG($courtWidth);
-
-	// append <svg>
-	$court.append($courtHTML);
-
-
-});
-
-
-
-
-
-
-
-
-// -------------------------------------
-//
-// ANGULAR 
-//
 navigator.vibrate = navigator.vibrate ||
        navigator.webkitVibrate ||
        navigator.mozVibrate ||
@@ -94,6 +9,200 @@ var vibrateClient = function(duration) {
 
 vibrateClient([120, 40, 120]);
 
+
+
+var myApp = angular.module('myApp', []);
+
+
+myApp.directive('court', ['$window','$timeout', function($window,$timeout) {
+  // 1. grab width of #basketball-container (parent)
+  // 2. apply sizing calculations
+  // 3. return <svg>
+ 
+  function _linkDirective(scope, element, attributes) {
+    
+    scope.uiParams = {
+      window : {
+        h : 100,
+        w : 100
+      },
+      court : {
+        h: 5,
+        w : 5
+      }
+    };
+    
+    scope.addShot = function(makeMiss, ev){
+      var shotResult, style;
+      
+      console.log(ev);
+      console.log(scope.uiParams.court.w);
+      
+      var xPrct = Math.round(ev.offsetX /scope.uiParams.court.w * 100) / 100;
+      var yPrct = Math.round(ev.offsetY /scope.uiParams.court.h * 100) / 100;
+      
+      // random for now
+      shotResult = Math.floor(Math.random()*2);
+      if (shotResult) {
+        style = 'shotSuccess';
+      } else {
+        style = 'shotMiss';
+      }
+      
+      /*
+      // determine if made/missed shot
+      if (makeMiss) {
+        shotResult = 1;
+        style = 'shotSuccess';
+      } else {
+        shotResult = 0;
+        style = 'shotMiss';
+      }
+      */
+      
+      var newShot = { x : ev.offsetX, 
+                      y : ev.offsetY, 
+                      r : 10, 
+                      'class': style,
+                      xPrct: xPrct,
+                      yPrct: yPrct,
+                      shotResult: shotResult
+      };
+      scope.onShot(newShot);
+      
+      console.log(scope.stats);
+    };
+    
+    scope.recalculate = function(){
+      scope.uiParams.court.w = element.width();
+      scope.uiParams.court.h = scope.uiParams.court.w * 0.75;
+    };
+    
+    
+    angular.element($window).bind('resize', function(){
+      $timeout(function(){
+        redrawUI();
+      },0);
+    });
+    
+      
+    function redrawUI(){
+      scope.uiParams.window.h = $window.innerHeight;
+      scope.uiParams.window.w = $window.innerWidth;
+      
+      scope.recalculate();
+    }
+    
+    //fire once to set it off
+    redrawUI();
+  }
+
+  //this is the directive API.
+  return {
+    //replace tells ng to replace the element with our template.
+    replace: true,
+    
+    templateUrl : './templates/court.html',
+    
+    //restrict : 'E' for <my-thing>, 'A' for <div my-thing>, 'EA' for both
+    restrict: 'E',
+
+    //scope allows us to bring in values from the controller.
+    scope: {
+      stats: '=',
+      onShot: '='
+    },
+  
+    //this fires once - its where you want to set up your listeners.
+    link: _linkDirective
+    }
+
+  }
+]);
+
+
+myApp.factory('GameData',function(){
+  
+  var _stats = {
+    shots : [],
+    shooting : {
+      FGM: 0,
+      FGA: 0
+    },
+    secondary : {
+			OREB: 0,
+			DREB: 0,
+			ASST: 0,
+			STL: 0,
+			BLK: 0,
+			TRN: 0,
+			FOUL: 0
+    }
+  };
+  
+  
+  return {
+    addShot : function(shot){
+      console.log(shot);
+      _stats.shots.push(shot);
+      _stats.shooting.FGA += 1;
+      // determine if made/missed
+      if (shot.shotResult) { _stats.shooting.FGM += 1; }
+    },
+    addStat : function(stat){
+      console.log(stat);
+      _stats.secondary[stat] += 1;
+      console.log(_stats);
+    },
+    stats : _stats
+  };
+});
+
+
+myApp.controller('ShotCtrl', ['$scope','GameData',
+  
+  function($scope, GameData) {
+    
+    //connect the stats object to scope.
+    $scope.gameStats = GameData.stats;
+    
+    $scope.addShotToData = GameData.addShot;
+
+  }
+]);
+
+
+
+myApp.controller('StatCtrl', ['$scope','GameData',
+  
+  function($scope, GameData) {
+    
+    $scope.addStat = GameData.addStat;
+    
+    $scope.gameStats = GameData.stats;
+  }
+]);
+
+
+myApp.controller('SummaryCtrl', ['$scope','GameData',
+  
+  function($scope, GameData) {
+    
+    $scope.gameStats = GameData.stats;
+    
+  }
+]);
+
+
+
+
+
+
+
+
+
+
+/*
 var app = angular.module("basicBasketballApp", []);
 
 app.controller("AppCtrl", function($scope) {
@@ -193,3 +302,4 @@ app.directive("stat", function() {
 		});
 	}	
 })
+*/

@@ -21,10 +21,18 @@ body {
 #basketball-court-container {	
 	padding: 0;
 }
-#basketball_court {
+.basketball-court {
     background-color: orange;
     stroke: black; stroke-width: 4;
 }
 svg .boundary {
 	stroke: black; stroke-width: 8;
+}
+.shotMiss {
+    fill: red;
+    stroke-width: 2;
+}
+.shotSuccess {
+    fill: green;
+    stroke-width: 2;
 }
