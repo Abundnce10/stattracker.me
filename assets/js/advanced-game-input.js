@@ -132,7 +132,7 @@ myApp.factory('GameData',function(){
     secondary : {
 			OREB: 0,
 			DREB: 0,
-			ASST: 0,
+			AST: 0,
 			STL: 0,
 			BLK: 0,
 			TRN: 0,

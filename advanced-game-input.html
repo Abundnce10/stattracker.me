@@ -60,7 +60,7 @@
       <div class="container" id="body-content">
 
         <div class="starter-template text-center">
-          <h1><i class="glyphicon glyphicon-user"></i> Michael Jordan #23</h1>
+          <h3><i class="glyphicon glyphicon-user"></i> Michael Jordan #23</h3>
         </div>
 
 
@@ -136,7 +136,7 @@
 
                           <div class="col-sm-4 col-xs-4 stat-group text-center">
                             <div class="btn-group">
-                              <button type="button" class="btn btn-success" ng-click="addStat('ASt')">AST</button>
+                              <button type="button" class="btn btn-success" ng-click="addStat('AST')">AST</button>
                             </div>
                           </div>
 
@@ -185,22 +185,22 @@
                   <tbody>
                     <tr>
                       <td>Points</td>
-                      <td>{{gameStats.secondary.REB}}</td>
+                      <td>{{gameStats.shooting.FGM * 2}}</td>
                       <td>17.8</td>
                     </tr>
                     <tr>
                       <td>FGM-A</td>
-                      <td>{{stats.FGM}}-{{stats.FGA}}</td>
+                      <td>{{gameStats.shooting.FGM}}-{{gameStats.shooting.FGA}}</td>
                       <td>55.6%</td>
                     </tr>
                     <tr>
                       <td>3PM-A</td>
-                      <td>{{stats.ThreeM}}-{{stats.ThreeA}}</td>
+                      <td>{{gameStats.shooting.FGM}}-{{gameStats.shooting.FGA}}</td>
                       <td>41.9%</td>
                     </tr>
                     <tr>
                       <td>FTM-A</td>
-                      <td>{{stats.FTM}}-{{stats.FTA}}</td>
+                      <td>{{gameStats.shooting.FGM}}-{{gameStats.shooting.FGA}}</td>
                       <td>84.7%</td>
                     </tr>
                     <tr>
