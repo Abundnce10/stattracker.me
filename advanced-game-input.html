@@ -177,8 +177,8 @@
                                 <span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Make</a></li>
-                                <li><a href="#">Miss</a></li>
+                                <li><a href="javascript:void(0);" ng-click="addFreeThrow(1)">Make</a></li>
+                                <li><a href="javascript:void(0);" ng-click="addFreeThrow(0)">Miss</a></li>
                               </ul>
                             </div>
                           </div>
@@ -190,10 +190,11 @@
                                 <span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Shooting</a></li>
-                                <li><a href="#">Reach In</a></li>
-                                <li><a href="#">Off-ball</a></li>
-                                <li><a href="#">Technical</a></li>
+                                <li><a href="javascript:void(0);" ng-click="addStat('FOUL')">Shooting</a></li>
+                                <li><a href="javascript:void(0);" ng-click="addStat('FOUL')">Reach In</a></li>
+                                <li><a href="javascript:void(0);" ng-click="addStat('FOUL')">Off-ball</a></li>
+                                <li><a href="javascript:void(0);" ng-click="addStat('FOUL')">Technical</a></li>
+                                <li><a href="javascript:void(0);" ng-click="addStat('FOUL')">Flagrant</a></li>
                               </ul>
                             </div>
                           </div>
@@ -243,7 +244,7 @@
                   <tbody>
                     <tr>
                       <td>Points</td>
-                      <td>{{gameStats.shooting.FGM * 2}}</td>
+                      <td>{{gameStats.points}}</td>
                       <td>17.8</td>
                     </tr>
                     <tr>
@@ -253,12 +254,12 @@
                     </tr>
                     <tr>
                       <td>3PM-A</td>
-                      <td>{{gameStats.shooting.FGM}}-{{gameStats.shooting.FGA}}</td>
+                      <td>N/A</td>
                       <td>41.9%</td>
                     </tr>
                     <tr>
                       <td>FTM-A</td>
-                      <td>{{gameStats.shooting.FGM}}-{{gameStats.shooting.FGA}}</td>
+                      <td>{{gameStats.shooting.FTM}}-{{gameStats.shooting.FTA}}</td>
                       <td>84.7%</td>
                     </tr>
                     <tr>

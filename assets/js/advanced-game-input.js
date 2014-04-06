@@ -1,4 +1,4 @@
-navigator.vibrate = navigator.vibrate ||
+/*navigator.vibrate = navigator.vibrate ||
        navigator.webkitVibrate ||
        navigator.mozVibrate ||
        navigator.msVibrate;
@@ -8,7 +8,7 @@ var vibrateClient = function(duration) {
 };
 
 vibrateClient([120, 40, 120]);
-
+*/
 
 
 var myApp = angular.module('myApp', []);
@@ -127,8 +127,11 @@ myApp.factory('GameData',function(){
     shots : [],
     shooting : {
       FGM: 0,
-      FGA: 0
+      FGA: 0,
+      FTM: 0,
+      FTA: 0
     },
+    points : 0,
     secondary : {
 			OREB: 0,
 			DREB: 0,
@@ -146,13 +149,25 @@ myApp.factory('GameData',function(){
       console.log(shot);
       _stats.shots.push(shot);
       _stats.shooting.FGA += 1;
-      // determine if made/missed
-      if (shot.shotResult) { _stats.shooting.FGM += 1; }
+      // made FG?
+      if (shot.shotResult) { 
+      	_stats.shooting.FGM += 1;
+      	_stats.points += 2;
+      }
     },
     addStat : function(stat){
       console.log(stat);
       _stats.secondary[stat] += 1;
       console.log(_stats);
+    },
+    addFreeThrow : function(freeThrow){
+    	console.log(freeThrow);
+    	_stats.shooting.FTA += 1;
+    	// made free throw?
+    	if (freeThrow) { 
+    		_stats.shooting.FTM += 1;
+    		_stats.points += 1;
+      }
     },
     stats : _stats
   };
@@ -178,6 +193,7 @@ myApp.controller('StatCtrl', ['$scope','GameData',
   function($scope, GameData) {
     
     $scope.addStat = GameData.addStat;
+    $scope.addFreeThrow = GameData.addFreeThrow;
     
     $scope.gameStats = GameData.stats;
   }
