@@ -86,7 +86,7 @@
                 
               </a>
               <a class="hidden-xs" href="#game-summary" data-toggle="tab">
-                <i class="glyphicon glyphicon-signal"></i> 
+                <i class="glyphicon glyphicon-stats"></i> 
                 <span>Summary</span>
               </a>
             </li>
@@ -110,64 +110,122 @@
                 <div class="row">
 
                   <!-- ShotCtrl -->
-                  <div class="col-md-6" id="basketball-court-container" ng-controller="ShotCtrl">
+                  <div class="col-md-6 col-sm-8" id="basketball-court-container" ng-controller="ShotCtrl">
                     <court stats="gameStats" on-shot="addShotToData"></court>
                   </div><!-- end ShotCtrl -->
 
                   <!-- StatCtrl -->
-                  <div class="col-md-6" ng-controller="StatCtrl">
+                  <div class="col-md-6 col-sm-4" ng-controller="StatCtrl">
                     <div class="panel panel-warning">
                       <div class="panel-heading">
                         <h3 class="panel-title">Non-Shooting Statistics</h3>
                       </div>
                       <div class="panel-body">
                         <div class="row">
-                          <div class="col-sm-4 col-xs-4 stat-group text-center">
+                          <div class="col-sm-6 col-xs-4 stat-group text-center">
                             <div class="btn-group">
                               <button type="button" class="btn btn-success" ng-click="addStat('OREB')">OREB</button>
                             </div>
                           </div>
 
-                          <div class="col-sm-4 col-xs-4 stat-group text-center">
+                          <div class="col-sm-6 col-xs-4 stat-group text-center">
                             <div class="btn-group">
                               <button type="button" class="btn btn-success" ng-click="addStat('DREB')">DREB</button>
                             </div>
                           </div>
 
-                          <div class="col-sm-4 col-xs-4 stat-group text-center">
+                          <div class="col-sm-6 col-xs-4 stat-group text-center">
                             <div class="btn-group">
                               <button type="button" class="btn btn-success" ng-click="addStat('AST')">AST</button>
                             </div>
                           </div>
 
-                          <div class="col-sm-4 col-xs-4 stat-group text-center">
+                          <div class="col-sm-6 col-xs-4 stat-group text-center">
                             <div class="btn-group">
                               <button type="button" class="btn btn-success" ng-click="addStat('STL')">STL</button>
                             </div>
                           </div>
 
-                          <div class="col-sm-4 col-xs-4 stat-group text-center">
+                          <div class="col-sm-6 col-xs-4 stat-group text-center">
                             <div class="btn-group">
                               <button type="button" class="btn btn-success" ng-click="addStat('TRN')">TRN</button>
                             </div>
                           </div>
 
-                          <div class="col-sm-4 col-xs-4 stat-group text-center">
+                          <div class="col-sm-6 col-xs-4 stat-group text-center">
                             <div class="btn-group">
                               <button type="button" class="btn btn-success" ng-click="addStat('BLK')">BLK</button>
-                            </div>
-                          </div>
-
-                          <div class="col-sm-4 col-sm-offset-4 col-xs-4 stat-group text-center">
-                            <div class="btn-group">
-                              <button type="button" class="btn btn-success" ng-click="addStat('FOUL')">FOUL</button>
                             </div>
                           </div>
 
                         </div>
                       </div>
                     </div>
+
+                    <!-- Free Throws / Fouls -->
+                    <div class="panel panel-info">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Free Throws / Fouls</h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+
+                          <div class="col-sm-6 col-xs-6 stat-group text-center">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Free Throw
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Make</a></li>
+                                <li><a href="#">Miss</a></li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-6 col-xs-6 stat-group text-center">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Foul
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Shooting</a></li>
+                                <li><a href="#">Reach In</a></li>
+                                <li><a href="#">Off-ball</a></li>
+                                <li><a href="#">Technical</a></li>
+                              </ul>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div><!-- end FreeThrow/Foul -->
+
                   </div><!-- end StatCtrl -->
+                </div>
+
+
+                <div class="row">
+                  <div class="col-xs-12">
+                    <!-- Game Log -->
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Game Log</h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                          <ul>
+                            <li>9:16 - Free Throw Successful | <a href="#">Undo</a></li>
+                            <li>9:16 - Free Throw Unsuccessful | <a href="#">Undo</a></li>
+                            <li>11:02 - Defensive Rebound | <a href="#">Undo</a></li>
+                            <li>11:47 - Field Goal Successful | <a href="#">Undo</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div><!-- end Game Log -->
+
+                  </div>
                 </div>
               </div>
             </div>
