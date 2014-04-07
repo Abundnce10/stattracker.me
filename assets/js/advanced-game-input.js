@@ -143,6 +143,7 @@ myApp.factory('GameData',function(){
     }
   };
 
+  var _gameLogId = 0;
   var _gameLogs = [];
 
   var timestampToTime = function() {
@@ -155,49 +156,47 @@ myApp.factory('GameData',function(){
   };
 
   var addLog = function(statType, distinction) {
-  	var time = timestampToTime()
+  	var time = timestampToTime();
+  	_gameLogId += 1;
 
   	switch (statType)
   	{
   		case "FG":
   			if (distinction) {
-	  			_gameLogs.push({msg: "Made 2pt Field Goal", time: time});
+	  			_gameLogs.push({msg: "Made 2pt Field Goal", time: time, id: _gameLogId, type: "FGM"});
 	  			break;
 	  		} else {
-	  			_gameLogs.push({msg: "Missed 2pt Field Goal", time: time});
+	  			_gameLogs.push({msg: "Missed 2pt Field Goal", time: time, id: _gameLogId, type: "FGA"});
 	  			break;
 	  		};
 	  	case "FT":
   			if (distinction) {
-	  			_gameLogs.push({msg: "Made Free Throw", time: time});
+	  			_gameLogs.push({msg: "Made Free Throw", time: time, id: _gameLogId, type: "FTM"});
 	  			break;
 	  		} else {
-	  			_gameLogs.push({msg: "Missed Free Throw", time: time});
+	  			_gameLogs.push({msg: "Missed Free Throw", time: time, id: _gameLogId, type: "FTA"});
 	  			break;
 	  		};
-	  	case "FT":
-	  		_gameLogs.push({msg: "Free Throw", time: time});
-	  		break;
 	  	case "DREB":
-	  		_gameLogs.push({msg: "Defensive Rebound", time: time});
+	  		_gameLogs.push({msg: "Defensive Rebound", time: time, id: _gameLogId, type: statType});
 	  		break;
 	  	case "OREB":
-	  		_gameLogs.push({msg: "Offensive Rebound", time: time});
+	  		_gameLogs.push({msg: "Offensive Rebound", time: time, id: _gameLogId, type: statType});
 	  		break;
 	  	case "AST":
-	  		_gameLogs.push({msg: "Assist", time: time});
+	  		_gameLogs.push({msg: "Assist", time: time, id: _gameLogId, type: statType});
 	  		break;
 	  	case "STL":
-	  		_gameLogs.push({msg: "Steal", time: time});
+	  		_gameLogs.push({msg: "Steal", time: time, id: _gameLogId, type: statType});
 	  		break;
 	  	case "BLK":
-	  		_gameLogs.push({msg: "Block", time: time});
+	  		_gameLogs.push({msg: "Block", time: time, id: _gameLogId, type: statType});
 	  		break;
 	  	case "TRN":
-	  		_gameLogs.push({msg: "Turnover", time: time});
+	  		_gameLogs.push({msg: "Turnover", time: time, id: _gameLogId, type: statType});
 	  		break;
 	  	case "FOUL":
-	  		_gameLogs.push({msg: "Foul", time: time});
+	  		_gameLogs.push({msg: "Foul", time: time, id: _gameLogId, type: statType});
 	  		break;
   	}
 
