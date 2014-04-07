@@ -157,15 +157,50 @@ myApp.factory('GameData',function(){
   var addLog = function(statType, distinction) {
   	var time = timestampToTime()
 
-  	if (statType == 'FG') {
-  		if (distinction) {
-  			_gameLogs.push({msg: "Made 2pt Field Goal", time: time});		
-  		} else {
-  			_gameLogs.push({msg: "Missed 2pt Field Goal", time: time});		
-  		}
-  	} else {
-  		_gameLogs.push({msg: stat, time: Date.now()});
+  	switch (statType)
+  	{
+  		case "FG":
+  			if (distinction) {
+	  			_gameLogs.push({msg: "Made 2pt Field Goal", time: time});
+	  			break;
+	  		} else {
+	  			_gameLogs.push({msg: "Missed 2pt Field Goal", time: time});
+	  			break;
+	  		};
+	  	case "FT":
+  			if (distinction) {
+	  			_gameLogs.push({msg: "Made Free Throw", time: time});
+	  			break;
+	  		} else {
+	  			_gameLogs.push({msg: "Missed Free Throw", time: time});
+	  			break;
+	  		};
+	  	case "FT":
+	  		_gameLogs.push({msg: "Free Throw", time: time});
+	  		break;
+	  	case "DREB":
+	  		_gameLogs.push({msg: "Defensive Rebound", time: time});
+	  		break;
+	  	case "OREB":
+	  		_gameLogs.push({msg: "Offensive Rebound", time: time});
+	  		break;
+	  	case "AST":
+	  		_gameLogs.push({msg: "Assist", time: time});
+	  		break;
+	  	case "STL":
+	  		_gameLogs.push({msg: "Steal", time: time});
+	  		break;
+	  	case "BLK":
+	  		_gameLogs.push({msg: "Block", time: time});
+	  		break;
+	  	case "TRN":
+	  		_gameLogs.push({msg: "Turnover", time: time});
+	  		break;
+	  	case "FOUL":
+	  		_gameLogs.push({msg: "Foul", time: time});
+	  		break;
   	}
+
   };
   
   
@@ -186,6 +221,7 @@ myApp.factory('GameData',function(){
       console.log(stat);
       _stats.secondary[stat] += 1;
       console.log(_stats);
+      addLog(stat)
     },
     addFreeThrow : function(freeThrow){
     	console.log(freeThrow);
@@ -195,6 +231,7 @@ myApp.factory('GameData',function(){
     		_stats.shooting.FTM += 1;
     		_stats.points += 1;
       }
+      addLog('FT', freeThrow);
     },
     stats : _stats,
     gameLogs : _gameLogs
