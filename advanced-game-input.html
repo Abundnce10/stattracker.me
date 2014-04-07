@@ -208,19 +208,16 @@
 
 
                 <div class="row">
-                  <div class="col-xs-12">
+                  <div class="col-xs-12" ng-controller="GameLogsCtrl">
                     <!-- Game Log -->
                     <div class="panel panel-danger">
                       <div class="panel-heading">
-                        <h3 class="panel-title">Game Log</h3>
+                        <h3 class="panel-title">Game Log (Most Recent)</h3>
                       </div>
                       <div class="panel-body">
                         <div class="row">
                           <ul>
-                            <li>9:16 - Free Throw Successful | <a href="#">Undo</a></li>
-                            <li>9:16 - Free Throw Unsuccessful | <a href="#">Undo</a></li>
-                            <li>11:02 - Defensive Rebound | <a href="#">Undo</a></li>
-                            <li>11:47 - Field Goal Successful | <a href="#">Undo</a></li>
+                            <li ng-repeat="log in gameLogs | reverse">{{log.msg}} - {{log.time}} | <a href="javascript:void(0);">Undo</a></li>
                           </ul>
                         </div>
                       </div>

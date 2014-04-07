@@ -142,6 +142,31 @@ myApp.factory('GameData',function(){
 			FOUL: 0
     }
   };
+
+  var _gameLogs = [];
+
+  var timestampToTime = function() {
+  	var now = new Date();
+  	// var hour = now.getHours();
+  	var hour = now.getHours()>12?now.getHours()-12:now.getHours()<1?12:now.getHours();
+  	var mins = (now.getMinutes()<10?'0':'') + now.getMinutes();
+  	var secs = (now.getSeconds()<10?'0':'') + now.getSeconds();
+  	return [hour, mins, secs].join(':');
+  };
+
+  var addLog = function(statType, distinction) {
+  	var time = timestampToTime()
+
+  	if (statType == 'FG') {
+  		if (distinction) {
+  			_gameLogs.push({msg: "Made 2pt Field Goal", time: time});		
+  		} else {
+  			_gameLogs.push({msg: "Missed 2pt Field Goal", time: time});		
+  		}
+  	} else {
+  		_gameLogs.push({msg: stat, time: Date.now()});
+  	}
+  };
   
   
   return {
@@ -154,6 +179,8 @@ myApp.factory('GameData',function(){
       	_stats.shooting.FGM += 1;
       	_stats.points += 2;
       }
+      // send to gameLogs
+      addLog('FG', shot.shotResult)
     },
     addStat : function(stat){
       console.log(stat);
@@ -169,7 +196,8 @@ myApp.factory('GameData',function(){
     		_stats.points += 1;
       }
     },
-    stats : _stats
+    stats : _stats,
+    gameLogs : _gameLogs
   };
 });
 
@@ -210,112 +238,22 @@ myApp.controller('SummaryCtrl', ['$scope','GameData',
 ]);
 
 
+myApp.controller('GameLogsCtrl', ['$scope', 'GameData',
+	
+	function($scope, GameData) {
+
+		$scope.gameLogs = GameData.gameLogs;
+
+	}
+]);
 
 
-
-
-
-
-
-
-/*
-var app = angular.module("basicBasketballApp", []);
-
-app.controller("AppCtrl", function($scope) {
-	$scope.stats = {
-		Points: 0,
-		Rebounds: 0,
-		FGM: 0,
-		FGA: 0,
-		ThreeM: 0,
-		ThreeA: 0,
-		FTM: 0,
-		FTA: 0,
-		OREB: 0,
-		DREB: 0,
-		ASST: 0,
-		STL: 0,
-		BLK: 0,
-		TRN: 0,
-		FOUL: 0
-	};
-
-	$scope.make = function(shotType) {
-        
-    // vibrate client
-    vibrateClient([120, 40, 120]);
-        
-		if(shotType == 'FG') {
-			$scope.stats.FGM += 1;
-			$scope.stats.FGA += 1;
-			$scope.stats.Points += 2;
-		} else if (shotType == 'FT') {
-			$scope.stats.FTM += 1;
-			$scope.stats.FTA += 1;
-			$scope.stats.Points += 1;
-		} else if (shotType == 'Three') {
-			$scope.stats.ThreeM += 1;
-			$scope.stats.ThreeA += 1;
-			$scope.stats.FGM += 1;
-			$scope.stats.FGA += 1;
-			$scope.stats.Points += 3;
-		}
-	};
-
-	$scope.miss = function(shotType) {
-        
-    // vibrate client
-    vibrateClient([120, 40, 120]);
-        
-		if (shotType == 'FG') {
-			$scope.stats.FGA += 1;
-		} else if (shotType == 'FT') {
-			$scope.stats.FTA += 1;
-		} else if (shotType == 'Three') {
-			$scope.stats.ThreeA += 1;
-			$scope.stats.FGA += 1;
-		}
-	};
-
-	$scope.increment = function(statType) {
-
-		
-		// vibrate client
-    vibrateClient([120, 40, 120]);
-
-		if (statType == 'OREB') {
-			$scope.stats.OREB += 1;
-			$scope.stats.Rebounds += 1;
-		} else if (statType == 'DREB') {
-			$scope.stats.DREB += 1;
-			$scope.stats.Rebounds += 1;
-		} else if (statType == 'ASST') {
-			$scope.stats.ASST += 1;
-		} else if (statType == 'BLK') {
-			$scope.stats.BLK += 1;
-		} else if (statType == 'STL') {
-			$scope.stats.STL += 1;
-		} else if (statType == 'TRN') {
-			$scope.stats.TRN += 1;
-		} else if (statType == 'FOUL') {
-			$scope.stats.FOUL += 1;
-		}
-	};
-
-	$scope.test = function() {
-
-		alert('clicked <svg>');
-
-	};
-
-
+myApp.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
 });
 
-app.directive("stat", function() {
-	return function(scope, element, attrs) {
-		element.bind("click", function() {
-			scope.$apply(attrs.stat);
-		});
-	}	
-})
-*/
+
+
+
