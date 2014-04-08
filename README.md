@@ -4,6 +4,10 @@
 ## To Do - advanced-game-input.html
 
 * Give each statistic an id (in order to delete/undo)
+<<<<<<< HEAD
+=======
+* Distinguish between made/missed shot (random right now)
+>>>>>>> distance
 * Determine whether shot is 3pt
 * Determine length of shot
 * Provide shooting percentages by regions on court
