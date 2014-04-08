@@ -16,8 +16,8 @@
 
 ## To Do - Rails app
 
-* Device for user auth
-* Forem gem for forum (user feedback, feature requests, etc.)
+* [Devise](https://github.com/plataformatec/devise) for user auth
+* [Forem](https://github.com/radar/forem) for forum (user feedback, feature requests, etc.)
 
 
 ## To Do - index.html
