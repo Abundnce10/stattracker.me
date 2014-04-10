@@ -79,7 +79,6 @@
               </a>
             </li>
 
-
             <li>
               <a class="hidden-sm hidden-md hidden-lg" href="#game-summary" data-toggle="tab">
                 <i class="glyphicon glyphicon-signal game-input-tab"></i> 
@@ -91,6 +90,16 @@
               </a>
             </li>
 
+            <li>
+              <a class="hidden-sm hidden-md hidden-lg" href="#game-shot-accuracy" data-toggle="tab">
+                <i class="glyphicon glyphicon-screenshot game-input-tab"></i> 
+                
+              </a>
+              <a class="hidden-xs" href="#game-shot-accuracy" data-toggle="tab">
+                <i class="glyphicon glyphicon-screenshot"></i> 
+                <span>Accuracy</span>
+              </a>
+            </li>
 
             <li>
               <a class="hidden-sm hidden-md hidden-lg" href="#game-settings" data-toggle="tab">
@@ -102,7 +111,7 @@
                 <span>Settings</span>
               </a>
             </li>
-          </ul>
+          </ul><!-- End Tabs -->
           
           <div class="tab-content">
             <div class="tab-pane active" id="game-input">
@@ -228,7 +237,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div><!-- End GameInput tab -->
 
             <div class="tab-pane" id="game-summary" ng-controller="SummaryCtrl">
               <div class="container">
@@ -304,14 +313,25 @@
                   </tbody>
                 </table>
               </div>
-            </div>
+            </div><!-- End Summary tab -->
+
+            <div class="tab-pane" id="game-shot-accuracy">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xs-12" id="shot-accuracy">
+                    
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Accuracy tab -->
+
             <div class="tab-pane" id="game-settings">
               Lorem settings dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
               <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
                 dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
                 Aliquam in felis sit amet augue.</p>
             </div>
-          </div>
+          </div><!-- End Settings tab -->
         </div>
         <!--/tabs-->
 
