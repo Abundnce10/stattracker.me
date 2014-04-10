@@ -14,7 +14,7 @@ An online repository of your athletic career; showcase your athletic achievement
 3. Tie together views & API
 
 
-### To Do - advanced-game-input.html
+#### To Do - advanced-game-input.html
 
 * Give each statistic an id (in order to delete/undo)
 * Distinguish between made/missed shot (random right now)
