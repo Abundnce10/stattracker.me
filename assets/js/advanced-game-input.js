@@ -283,6 +283,48 @@ myApp.controller('GameLogsCtrl', ['$scope', 'GameData',
 	}
 ]);
 
+myApp.controller('SettingsCtrl', ['$scope', '$http', 'GameData',
+  
+  function($scope, $http, GameData) {
+
+    $scope.stats = GameData.stats;
+
+    $scope.saveGame = function() {
+
+      var gameData = {
+        completed: 0,
+        opponent: 'UW Huskies',
+        datePlayed: '2014-04-24',
+        stats: $scope.stats
+      };
+
+      console.log(gameData)
+
+      $http.post('http://limitless-beyond-8011.herokuapp.com/api/games', gameData)
+          .success(function(data, status, headers, config) {
+            // this callback will be called asynchronously
+            // when the response is available
+            alert('saved game data');
+            //console.log(data);
+            //console.log(status);
+            //console.log(headers);
+            //console.log(config);
+          })
+          .error(function(data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            alert('error posting game');
+            //console.log(data);
+            //console.log(status);
+            //console.log(headers);
+            //console.log(config);
+          });
+
+    };
+
+  }
+]);
+
 
 myApp.filter('reverse', function() {
   return function(items) {

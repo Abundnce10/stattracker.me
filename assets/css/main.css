@@ -226,8 +226,8 @@ a:after {
 	font-size: 20px;
 }
 
-#features .col-lg-4 h4,
-#features .col-lg-4 licon {
+#features h4,
+#features licon {
     font-size: 20px;
     color: #1abc9c;
 }
